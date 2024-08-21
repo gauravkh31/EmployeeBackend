@@ -53,8 +53,8 @@ public class EmployeeController {
 		return employeeDetails;
 		}
 	//api for getting employee information from employee id 
-	 @GetMapping("/getEmployeeById")
-	    public EmployeeInformation getEmployeeById(@RequestParam Integer id) {
+	 @GetMapping("/employees/{id}")
+	    public EmployeeInformation getEmployeeById(@PathVariable("id") Integer id) {
 	        return employeeRepo.getEmployeeById(id);
 	    }
 	//api for deleting employee by employee id
@@ -65,7 +65,7 @@ public class EmployeeController {
 //	 }
 	 
 	 @DeleteMapping("/delete/{id}")
-	 public String deleteEmployee(@PathVariable int id) {
+	 public String deleteEmployee(@PathVariable("id") Integer id) {
 	     employeeRepo.deleteById(id);
 	     return "Employee deleted successfully";
 	 }
